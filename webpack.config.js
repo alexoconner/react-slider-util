@@ -9,7 +9,6 @@ module.exports = {
     devtool: 'eval',
     entry: [
         'webpack-dev-server/client?http://localhost:3000',
-        'webpack/hot/only-dev-server',
         './lib/index.js'
     ],
     output: {
@@ -17,9 +16,6 @@ module.exports = {
         filename: 'index.js',
         publicPath: '/assets/'
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin()
-    ],
     module: {
         loaders: [
             {
