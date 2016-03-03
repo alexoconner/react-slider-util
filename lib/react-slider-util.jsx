@@ -132,19 +132,29 @@ class ReactSliderUtil extends React.Component {
         // styles (if no css classes are set)
         const sliderWrapper = {
             position: 'relative',
+            display: 'table',
             width: '100%',
             height: '30px'
         };
 
         const sliderMin = {
             display: 'none',
-            width: 'auto'
+            width: 'auto',
+            textAlign: 'right',
+            paddingRight: '5px'
         };
 
         const sliderMax = {
             display: 'none',
-            width: 'auto'
+            width: 'auto',
+            textAlign: 'left',
+            paddingLeft: '5px'
         };
+
+        const sliderTrackWrapper = {
+            position: 'relative',
+            display: 'table-cell'
+        }
 
         const sliderTrack = {
             position: 'relative',
@@ -167,9 +177,9 @@ class ReactSliderUtil extends React.Component {
         };
 
         if (this.props.showMinMax == true) {
-            sliderMin.display = 'inline-block';
-            sliderMax.display = 'inline-block';
-            sliderTrack.width = '88%';
+            sliderMin.display = 'table-cell';
+            sliderMax.display = 'table-cell';
+            sliderTrackWrapper.width = '90%';
         }
 
         console.log(this.state);
@@ -179,12 +189,14 @@ class ReactSliderUtil extends React.Component {
                 <div style={ sliderMin }>
                     { this.props.min }
                 </div>
-                <div ref="slider-track" style={ sliderTrack }>
-                    <div
-                        ref="slider-control"
-                        onMouseDown={ this.sliderDragOn }
-                        onMouseUp={ this.sliderDragOff }
-                        style={ sliderControl }>
+                <div style={ sliderTrackWrapper }>
+                    <div ref="slider-track" style={ sliderTrack }>
+                        <div
+                            ref="slider-control"
+                            onMouseDown={ this.sliderDragOn }
+                            onMouseUp={ this.sliderDragOff }
+                            style={ sliderControl }>
+                        </div>
                     </div>
                 </div>
                 <div style={ sliderMax }>
